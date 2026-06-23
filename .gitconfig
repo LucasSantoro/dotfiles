@@ -1,0 +1,39 @@
+[user]
+  name = Lucas Santoro
+  email = luke.santoro@gmail.com
+
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+
+[color]
+  ui = auto
+
+[diff]
+  colorMoved = zebra
+
+[color "branch"]
+  current = yellow reverse
+  local = cyan
+  remote = "#6699cc"
+
+[color "status"]
+  header = "#999999"
+  added = "#6699cc"
+  changed = "#f2777a"
+  untracked = "#ffcc66"
+  branch = "#2d2d2d" "#6699cc"
+    # Because the phrase "Detached HEAD" isn't unnerving enough
+  nobranch = bold ul blink brightred
+[color "diff"]
+  meta = "#515151"
+  func = "#cc99cc"
+  frag = "#66cccc"
+  context = "#999999"
+  old = "#f99157"                  # orange  — deleted / old lines
+  new = "#6699cc"                  # blue    — added / new lines
+  oldMoved = "#cc99cc"             # purple  — block moved away from
+  newMoved = "#66cccc"             # teal    — block moved to
+  oldMovedAlternative = "#c594c5"  # adjacent moved block (variant)
+  newMovedAlternative = "#5fb3b3"  # adjacent moved block (variant)

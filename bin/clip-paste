@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# clip-paste — print the system clipboard to stdout. Inverse of `clip`.
+
+set -euo pipefail
+
+if command -v pbpaste >/dev/null 2>&1; then
+  exec pbpaste
+elif command -v win32yank.exe >/dev/null 2>&1; then
+  exec win32yank.exe -o --lf
+elif command -v powershell.exe >/dev/null 2>&1; then
+  # PowerShell's Get-Clipboard appends CRLF; strip the trailing CR.
+  powershell.exe -NoProfile -Command Get-Clipboard | sed 's/\r$//'
+elif [ -n "${WAYLAND_DISPLAY:-}" ] && command -v wl-paste >/dev/null 2>&1; then
+  exec wl-paste --no-newline
+elif command -v xclip >/dev/null 2>&1; then
+  exec xclip -selection clipboard -o
+elif command -v xsel >/dev/null 2>&1; then
+  exec xsel --clipboard --output
+else
+  echo "clip-paste: no clipboard backend found" >&2
+  exit 1
+fi

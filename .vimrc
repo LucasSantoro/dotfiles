@@ -33,7 +33,10 @@ nnoremap <C-p> :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --sele
 nnoremap d "_d
 vnoremap p "_dP
 
-vmap <C-c> "zy<Esc>:call system('pbcopy', @z)<CR>
+vmap <C-c> "zy<Esc>:call system('clip', @z)<CR>
+" vmap <C-c> "zy<Esc>:call system('tmux load-buffer -', @z)<CR>
+
+set clipboard=unnamedplus
 
 set termguicolors
 set laststatus=2
