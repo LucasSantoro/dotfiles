@@ -57,6 +57,8 @@ link_dotfiles() {
   done
   link_file "$DOTFILES_DIR/claude/settings.json"         "$HOME/.claude/settings.json"         ".claude/settings.json"
   link_file "$DOTFILES_DIR/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh" ".claude/statusline-command.sh"
+  # tmuxinator project configs (symlink the whole dir so new projects auto-sync)
+  link_file "$DOTFILES_DIR/tmuxinator" "${XDG_CONFIG_HOME:-$HOME/.config}/tmuxinator" ".config/tmuxinator"
   if [ -d "$DOTFILES_DIR/bin" ]; then
     local src
     for src in "$DOTFILES_DIR"/bin/*; do
@@ -95,7 +97,7 @@ install_deps() {
   [ "$OS" = macos ] && ensure_brew
 
   # Tools the package manager ships directly (jq + python3 power the Claude statusline)
-  pkg_install git curl zsh tmux vim ripgrep jq python3
+  pkg_install git curl zsh tmux vim ripgrep jq python3 tmuxinator
   [ "$OS" = macos ] && pkg_install asdf
 
   # oh-my-zsh (not packaged); KEEP_ZSHRC so it leaves our linked .zshrc alone
