@@ -52,11 +52,9 @@ link_file() {
 link_dotfiles() {
   echo "==> Linking dotfiles into \$HOME"
   local f
-  for f in .bashrc .profile .tmux.conf .vimrc .zshrc .gitconfig .tool-versions; do
+  for f in .bashrc .profile .tmux.conf .vimrc .zshrc .gitconfig .tool-versions .shellrc .shellrc.employer; do
     link_file "$DOTFILES_DIR/$f" "$HOME/$f" "$f"
   done
-  link_file "$DOTFILES_DIR/shell/common.sh"   "$HOME/.shellrc"          ".shellrc"
-  link_file "$DOTFILES_DIR/shell/employer.sh" "$HOME/.shellrc.employer" ".shellrc.employer"
   link_file "$DOTFILES_DIR/claude/settings.json"         "$HOME/.claude/settings.json"         ".claude/settings.json"
   link_file "$DOTFILES_DIR/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh" ".claude/statusline-command.sh"
   if [ -d "$DOTFILES_DIR/bin" ]; then

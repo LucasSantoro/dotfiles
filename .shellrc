@@ -1,6 +1,6 @@
-# shell/common.sh — config shared by bash and zsh.
-# Deployed to ~/.shellrc by install.sh and sourced from .zshrc and .bashrc.
-# Keep this POSIX-ish: it's read by both shells, so no bash- or zsh-only syntax.
+# .shellrc — config shared by bash and zsh. Symlinked to ~/.shellrc and sourced
+# from .zshrc and .bashrc. Keep it POSIX-ish: read by both shells, so no bash-
+# or zsh-only syntax.
 
 # Default editor
 export VISUAL=vim
@@ -30,8 +30,10 @@ alias pbpaste='clip-paste'
 # ssh-agent + key
 alias sag='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
 
-# Employer-specific config (HEROKU app, work tooling) — see shell/employer.sh
+# Employer-specific config (HEROKU app, work tooling) — see .shellrc.employer
 [ -f ~/.shellrc.employer ] && . ~/.shellrc.employer
 
 # Machine-specific / secret config (per-host paths, tokens) — not committed.
 [ -f ~/.shellrc.local ] && . ~/.shellrc.local
+
+# vim: set ft=sh:
